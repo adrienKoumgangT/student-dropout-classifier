@@ -1,0 +1,720 @@
+# ============================================================
+# Student Dropout Prediction - Feature Configuration
+# ============================================================
+# This file defines all feature categories, mappings,
+# and preprocessing parameters for the ML pipeline.
+# ============================================================
+
+
+# ============================================================
+# 1. TARGET VARIABLE
+# ============================================================
+target:
+  name: "Target"
+  encoded_name: "Target_encoded"
+  description: "Student final status (Dropout or Graduate)"
+  mapping:
+    Dropout: 1
+    Graduate: 0
+  positive_class: "Dropout"
+  positive_class_label: 1
+
+# ============================================================
+# 2. BINARY FEATURES (0/1 - No transformation needed)
+# ============================================================
+binary_features:
+  - name: "Gender"
+    original_column: "Gender"
+    mapping:
+      0: "Female"
+      1: "Male"
+    description: "Student's gender"
+
+  - name: "Scholarship holder"
+    original_column: "Scholarship holder"
+    mapping:
+      0: "No"
+      1: "Yes"
+    description: "Whether the student holds a scholarship"
+
+  - name: "Debtor"
+    original_column: "Debtor"
+    mapping:
+      0: "No"
+      1: "Yes"
+    description: "Whether the student has outstanding tuition fees"
+
+  - name: "Tuition fees up to date"
+    original_column: "Tuition fees up to date"
+    mapping:
+      0: "No"
+      1: "Yes"
+    description: "Whether tuition fees are current"
+
+  - name: "Displaced"
+    original_column: "Displaced"
+    mapping:
+      0: "No"
+      1: "Yes"
+    description: "Whether the student is displaced from their home region"
+
+  - name: "Educational special needs"
+    original_column: "Educational special needs"
+    mapping:
+      0: "No"
+      1: "Yes"
+    description: "Whether the student has special educational needs"
+
+  - name: "International"
+    original_column: "International"
+    mapping:
+      0: "No"
+      1: "Yes"
+    description: "Whether the student is an international student"
+
+  - name: "Daytime/evening attendance"
+    original_column: "Daytime/evening attendance"
+    mapping:
+      0: "Evening"
+      1: "Daytime"
+    description: "Class attendance period"
+
+# ============================================================
+# 3. ORDINAL FEATURES (Meaningful ordering preserved)
+# ============================================================
+ordinal_features:
+  - name: "Mother's qualification"
+    original_column: "Mother's qualification"
+    encoding: "ordinal"
+    mapping:
+      1: "Secondary Education - 12th Year or Equivalent"
+      2: "Higher Education - Bachelor's Degree"
+      3: "Higher Education - Degree"
+      4: "Higher Education - Master's"
+      5: "Higher Education - Doctorate"
+      6: "Frequency of Higher Education"
+      7: "12th Year of Schooling - Not Completed"
+      8: "11th Year of Schooling - Not Completed"
+      9: "7th Year (Old)"
+      10: "Other - 11th Year of Schooling"
+      11: "2nd Year Complementary High School Course"
+      12: "Technical/Professional Course"
+      13: "7th Year of Schooling"
+      14: "2nd Cycle of Basic Education"
+      15: "1st Cycle of Basic Education"
+      16: "Basic Education 2nd Cycle"
+      17: "Other"
+      18: "Bachelor's Degree"
+      19: "Master's Degree"
+      20: "Doctorate"
+      21: "Primary Education"
+      22: "Technical/Professional Course"
+      23: "Higher Education - Degree"
+      24: "Higher Education - Master's"
+      25: "Higher Education - Doctorate"
+      26: "Frequency of Higher Education"
+      27: "12th Year of Schooling - Not Completed"
+      28: "11th Year of Schooling - Not Completed"
+      29: "Other - 11th Year of Schooling"
+      30: "2nd Year Complementary High School Course"
+      31: "Technical/Professional Course"
+      32: "7th Year of Schooling"
+      33: "2nd Cycle of Basic Education"
+      34: "1st Cycle of Basic Education"
+      35: "Basic Education 2nd Cycle"
+      36: "Other"
+      37: "Basic Education 3rd Cycle"
+      38: "Secondary Education"
+      39: "Higher Education - Bachelor's Degree"
+      40: "Higher Education - Master's"
+      41: "Higher Education - Doctorate"
+      42: "Frequency of Higher Education"
+      43: "12th Year of Schooling - Not Completed"
+      44: "Other"
+    education_levels:
+      1_primary:
+        - 1
+        - 7
+        - 13
+        - 15
+        - 21
+        - 34
+        - 35
+        - 37
+        # description: "Primary/Basic education"
+      2_secondary:
+        - 2
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 16
+        - 17
+        - 22
+        - 27
+        - 28
+        - 29
+        - 30
+        - 31
+        - 32
+        - 33
+        - 36
+        - 38
+        - 43
+        - 44
+        # description: "Secondary/Technical education"
+      3_higher:
+        - 3
+        - 4
+        - 5
+        - 6
+        - 18
+        - 19
+        - 20
+        - 23
+        - 24
+        - 25
+        - 26
+        - 39
+        - 40
+        - 41
+        - 42
+        # description: "Higher education (Bachelor's, Master's, Doctorate)"
+
+  - name: "Father's qualification"
+    original_column: "Father's qualification"
+    encoding: "ordinal"
+    mapping:
+      1: "Secondary Education - 12th Year or Equivalent"
+      2: "Higher Education - Bachelor's Degree"
+      3: "Higher Education - Degree"
+      4: "Higher Education - Master's"
+      5: "Higher Education - Doctorate"
+      6: "Frequency of Higher Education"
+      7: "12th Year of Schooling - Not Completed"
+      8: "11th Year of Schooling - Not Completed"
+      9: "7th Year (Old)"
+      10: "Other - 11th Year of Schooling"
+      11: "2nd Year Complementary High School Course"
+      12: "Technical/Professional Course"
+      13: "7th Year of Schooling"
+      14: "2nd Cycle of Basic Education"
+      15: "1st Cycle of Basic Education"
+      16: "Basic Education 2nd Cycle"
+      17: "Other"
+      18: "Bachelor's Degree"
+      19: "Master's Degree"
+      20: "Doctorate"
+      21: "Primary Education"
+      22: "Technical/Professional Course"
+      23: "Higher Education - Degree"
+      24: "Higher Education - Master's"
+      25: "Higher Education - Doctorate"
+      26: "Frequency of Higher Education"
+      27: "12th Year of Schooling - Not Completed"
+      28: "11th Year of Schooling - Not Completed"
+      29: "Other - 11th Year of Schooling"
+      30: "2nd Year Complementary High School Course"
+      31: "Technical/Professional Course"
+      32: "7th Year of Schooling"
+      33: "2nd Cycle of Basic Education"
+      34: "1st Cycle of Basic Education"
+      35: "Basic Education 2nd Cycle"
+      36: "Other"
+      37: "Basic Education 3rd Cycle"
+      38: "Secondary Education"
+      39: "Higher Education - Bachelor's Degree"
+      40: "Higher Education - Master's"
+      41: "Higher Education - Doctorate"
+      42: "Frequency of Higher Education"
+      43: "12th Year of Schooling - Not Completed"
+      44: "Other"
+    education_levels:
+      1_primary:
+        - 1
+        - 7
+        - 13
+        - 15
+        - 21
+        - 34
+        - 35
+        - 37
+        # description: "Primary/Basic education"
+      2_secondary:
+        - 2
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 16
+        - 17
+        - 22
+        - 27
+        - 28
+        - 29
+        - 30
+        - 31
+        - 32
+        - 33
+        - 36
+        - 38
+        - 43
+        - 44
+        # description: "Secondary/Technical education"
+      3_higher:
+        - 3
+        - 4
+        - 5
+        - 6
+        - 18
+        - 19
+        - 20
+        - 23
+        - 24
+        - 25
+        - 26
+        - 39
+        - 40
+        - 41
+        - 42
+        # description: "Higher education (Bachelor's, Master's, Doctorate)"
+
+# ============================================================
+# 4. NOMINAL FEATURES (No ordering - One-Hot Encoded)
+# ============================================================
+nominal_features:
+  - name: "Course"
+    original_column: "Course"
+    encoding: "onehot"
+    description: "Course/degree program code"
+    categories: 33
+    note: "High cardinality - consider grouping rare courses"
+
+  - name: "Application mode"
+    original_column: "Application mode"
+    encoding: "onehot"
+    description: "Method of application submission"
+    mapping:
+      1: "General Contingent - Phase 1"
+      2: "Special Contingent - Azores"
+      3: "Special Contingent - Madeira"
+      5: "Special Contingent - Azores (Higher)"
+      7: "Over 23 Years Old"
+      10: "Special Contingent - Handicapped"
+      15: "Special Contingent - Athletes"
+      16: "Special Contingent - High-Performance Athletes"
+      17: "Special Contingent - Children of Firefighters"
+      18: "Special Contingent - Children of Military/Police"
+      26: "Special Contingent - Children of Portuguese Living Abroad"
+      27: "Special Contingent - Children of Portuguese Living Abroad (2nd phase)"
+      39: "Over 23 Years Old"
+      42: "Special Contingent - Azores"
+      43: "Special Contingent - Madeira"
+      44: "Special Contingent - Handicapped"
+      51: "International Student"
+      53: "Special Contingent - Athletes"
+      55: "Special Contingent - High-Performance Athletes"
+      57: "Special Contingent - Children of Firefighters"
+
+  - name: "Application order"
+    original_column: "Application order"
+    encoding: "ordinal_or_onehot"
+    description: "Student's preference order for the course"
+    note: "Can be treated as ordinal (1st choice, 2nd choice, etc.)"
+    ordinal_values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+  - name: "Mother's occupation"
+    original_column: "Mother's occupation"
+    encoding: "onehot"
+    description: "Mother's occupation category"
+    mapping:
+      1: "Student"
+      2: "Armed Forces Representatives"
+      3: "Other Unqualified"
+      4: "Qualified Professionals in Agriculture/Fishing"
+      5: "Skilled Workers in Industry/Construction"
+      6: "Medium-Level Technicians"
+      7: "Services/Commerce Administrative Staff"
+      8: "Personal Services/Security Workers"
+      9: "Plant/Machine Operators and Assembly Workers"
+      10: "Unskilled Workers"
+
+  - name: "Father's occupation"
+    original_column: "Father's occupation"
+    encoding: "onehot"
+    description: "Father's occupation category"
+    mapping:
+      1: "Student"
+      2: "Armed Forces Representatives"
+      3: "Other Unqualified"
+      4: "Qualified Professionals in Agriculture/Fishing"
+      5: "Skilled Workers in Industry/Construction"
+      6: "Medium-Level Technicians"
+      7: "Services/Commerce Administrative Staff"
+      8: "Personal Services/Security Workers"
+      9: "Plant/Machine Operators and Assembly Workers"
+      10: "Unskilled Workers"
+
+  - name: "Previous qualification"
+    original_column: "Previous qualification"
+    encoding: "onehot"
+    description: "Student's prior education level"
+    mapping:
+      1: "Secondary Education"
+      2: "Higher Education - Bachelor's Degree"
+      3: "Higher Education - Degree"
+      4: "Higher Education - Master's"
+      5: "Higher Education - Doctorate"
+      6: "Frequency of Higher Education"
+      7: "12th Year of Schooling - Not Completed"
+      8: "11th Year of Schooling - Not Completed"
+      9: "Other - 11th Year"
+      10: "2nd Year Complementary High School"
+      11: "Technical/Professional Course"
+      12: "7th Year of Schooling"
+      13: "2nd Cycle of Basic Education"
+      14: "1st Cycle of Basic Education"
+      15: "Basic Education 2nd Cycle"
+      16: "Technological Specialization Course"
+      17: "Other"
+
+  - name: "Marital status"
+    original_column: "Marital status"
+    encoding: "onehot"
+    description: "Student's marital status"
+    mapping:
+      1: "Single"
+      2: "Married"
+      3: "Widower"
+      4: "Divorced"
+      5: "Facto Union"
+      6: "Legally Separated"
+    note: "No inherent ordering - treat as nominal"
+
+  - name: "Nacionality"
+    original_column: "Nacionality"
+    encoding: "onehot"
+    description: "Student's nationality"
+    mapping:
+      1: "Portuguese"
+      2: "German"
+      3: "Spanish"
+      4: "Italian"
+      5: "French"
+      6: "Dutch"
+      10: "Brazilian"
+      11: "Angolan"
+      12: "Cape Verdean"
+      13: "Guinean"
+      14: "Mozambican"
+      15: "Santomean"
+      21: "Turkish"
+      22: "Algerian"
+      23: "Belgian"
+      24: "Polish"
+      25: "Romanian"
+      26: "Bulgarian"
+      27: "Ukrainian"
+      28: "Moldovan"
+      29: "Russian"
+      30: "South African"
+      31: "Chinese"
+      32: "Indian"
+      33: "Pakistani"
+      34: "Moroccan"
+      35: "Iranian"
+      36: "Syrian"
+      37: "Venezuelan"
+      38: "Colombian"
+      39: "Peruvian"
+      40: "Ecuadorian"
+      41: "Cuban"
+      42: "Argentinian"
+      43: "Uruguayan"
+      44: "Chilean"
+      45: "Mexican"
+      46: "Bolivian"
+      47: "Paraguayan"
+      62: "Canadian"
+      63: "American"
+      64: "Australian"
+      65: "Japanese"
+      66: "South Korean"
+      67: "Israeli"
+      68: "Egyptian"
+      69: "Tunisian"
+      70: "Ghanaian"
+      71: "Nigerian"
+      72: "Kenyan"
+      73: "Senegalese"
+      74: "Malian"
+      75: "Congolese"
+      76: "Ivorian"
+      77: "Togolese"
+      80: "Other European"
+      81: "Other Asian"
+      82: "Other African"
+      83: "Other American"
+      84: "Other Oceanian"
+      99: "Unknown"
+
+# ============================================================
+# 5. CONTINUOUS NUMERICAL FEATURES
+# ============================================================
+continuous_features:
+  demographic:
+    - name: "Age at enrollment"
+      original_column: "Age at enrollment"
+      description: "Student's age when enrolling"
+      range: [17, 70]
+      unit: "years"
+
+  academic_history:
+    - name: "Previous qualification (grade)"
+      original_column: "Previous qualification (grade)"
+      description: "Final grade from previous education"
+      range: [0, 200]
+      note: "Portuguese grading scale (0-200)"
+
+    - name: "Admission grade"
+      original_column: "Admission grade"
+      description: "Combined admission score"
+      range: [0, 200]
+      note: "Portuguese grading scale (0-200)"
+
+  first_semester:
+    - name: "Curricular units 1st sem (credited)"
+      original_column: "Curricular units 1st sem (credited)"
+      description: "Courses with credit/enrollment equivalence"
+      range: [0, 20]
+
+    - name: "Curricular units 1st sem (enrolled)"
+      original_column: "Curricular units 1st sem (enrolled)"
+      description: "Total courses enrolled in"
+      range: [0, 20]
+
+    - name: "Curricular units 1st sem (evaluations)"
+      original_column: "Curricular units 1st sem (evaluations)"
+      description: "Total assessments taken"
+      range: [0, 45]
+
+    - name: "Curricular units 1st sem (approved)"
+      original_column: "Curricular units 1st sem (approved)"
+      description: "Courses passed"
+      range: [0, 20]
+
+    - name: "Curricular units 1st sem (grade)"
+      original_column: "Curricular units 1st sem (grade)"
+      description: "Average grade for the semester"
+      range: [0, 20]
+      note: "Portuguese grading scale (0-20)"
+
+    - name: "Curricular units 1st sem (without evaluations)"
+      original_column: "Curricular units 1st sem (without evaluations)"
+      description: "Courses enrolled but not evaluated"
+      range: [0, 20]
+
+  second_semester:
+    - name: "Curricular units 2nd sem (credited)"
+      original_column: "Curricular units 2nd sem (credited)"
+      description: "Courses with credit/enrollment equivalence"
+      range: [0, 20]
+
+    - name: "Curricular units 2nd sem (enrolled)"
+      original_column: "Curricular units 2nd sem (enrolled)"
+      description: "Total courses enrolled in"
+      range: [0, 20]
+
+    - name: "Curricular units 2nd sem (evaluations)"
+      original_column: "Curricular units 2nd sem (evaluations)"
+      description: "Total assessments taken"
+      range: [0, 45]
+
+    - name: "Curricular units 2nd sem (approved)"
+      original_column: "Curricular units 2nd sem (approved)"
+      description: "Courses passed"
+      range: [0, 20]
+
+    - name: "Curricular units 2nd sem (grade)"
+      original_column: "Curricular units 2nd sem (grade)"
+      description: "Average grade for the semester"
+      range: [0, 20]
+      note: "Portuguese grading scale (0-20)"
+
+    - name: "Curricular units 2nd sem (without evaluations)"
+      original_column: "Curricular units 2nd sem (without evaluations)"
+      description: "Courses enrolled but not evaluated"
+      range: [0, 20]
+
+  economic_indicators:
+    - name: "Unemployment rate"
+      original_column: "Unemployment rate"
+      description: "National unemployment rate at enrollment"
+      unit: "percentage"
+
+    - name: "Inflation rate"
+      original_column: "Inflation rate"
+      description: "National inflation rate at enrollment"
+      unit: "percentage"
+
+    - name: "GDP"
+      original_column: "GDP"
+      description: "GDP growth rate at enrollment"
+      unit: "percentage"
+
+# ============================================================
+# 6. ENGINEERED FEATURES (Created during preprocessing)
+# ============================================================
+engineered_features:
+  academic_performance:
+    - name: "approval_rate_sem1"
+      formula: "(Curricular units 1st sem (approved) / Curricular units 1st sem (enrolled)) * 100"
+      description: "Percentage of enrolled courses passed in 1st semester"
+      type: "percentage"
+      range: [0, 100]
+
+    - name: "approval_rate_sem2"
+      formula: "(Curricular units 2nd sem (approved) / Curricular units 2nd sem (enrolled)) * 100"
+      description: "Percentage of enrolled courses passed in 2nd semester"
+      type: "percentage"
+      range: [0, 100]
+
+    - name: "grade_momentum"
+      formula: "Curricular units 1st sem (grade) - Admission grade"
+      description: "Change in performance from admission to 1st semester"
+      type: "continuous"
+      range: [-200, 20]
+
+    - name: "grade_decline"
+      formula: "Curricular units 1st sem (grade) - Curricular units 2nd sem (grade)"
+      description: "Grade change from 1st to 2nd semester (positive = declining)"
+      type: "continuous"
+
+    - name: "evaluation_intensity_sem1"
+      formula: "Curricular units 1st sem (evaluations) / Curricular units 1st sem (enrolled)"
+      description: "Average evaluations per enrolled course in 1st semester"
+      type: "ratio"
+
+    - name: "credit_utilization_sem1"
+      formula: "Curricular units 1st sem (credited) / Curricular units 1st sem (enrolled)"
+      description: "Ratio of credited to enrolled courses (prior credits usage)"
+      type: "ratio"
+
+  socioeconomic:
+    - name: "financial_stress"
+      formula: "Debtor + (1 - Tuition fees up to date) + (1 - Scholarship holder)"
+      description: "Combined financial stress indicator (0-3 scale, higher = more stress)"
+      type: "score"
+      range: [0, 3]
+
+    - name: "parent_education"
+      formula: "(Mother's qualification + Father's qualification) / 2"
+      description: "Average parental education level"
+      type: "continuous"
+
+# ============================================================
+# 7. FEATURE GROUPS FOR EXPERIMENTS
+# ============================================================
+experiment_feature_groups:
+  # Early prediction model (before 2nd semester results)
+  early_intervention:
+    description: "Features available after 1st semester for early dropout intervention"
+    include_categories:
+      - "binary_features"
+      - "ordinal_features"
+      - "nominal_features"
+      - "academic_history"
+      - "first_semester"
+      - "economic_indicators"
+      - "demographic"
+    exclude_patterns:
+      - "2nd sem"
+      - "sem2"
+    engineered_features:
+      - "approval_rate_sem1"
+      - "grade_momentum"
+      - "evaluation_intensity_sem1"
+      - "financial_stress"
+      - "parent_education"
+
+  # Full model (after 2nd semester)
+  complete_model:
+    description: "All available features for maximum predictive power"
+    include_categories:
+      - "binary_features"
+      - "ordinal_features"
+      - "nominal_features"
+      - "academic_history"
+      - "first_semester"
+      - "second_semester"
+      - "economic_indicators"
+      - "demographic"
+    engineered_features:
+      - "approval_rate_sem1"
+      - "approval_rate_sem2"
+      - "grade_momentum"
+      - "grade_decline"
+      - "evaluation_intensity_sem1"
+      - "credit_utilization_sem1"
+      - "financial_stress"
+      - "parent_education"
+
+  # Minimal interpretable model
+  interpretable_model:
+    description: "Subset of highly interpretable features for policy decisions"
+    features:
+      - "Curricular units 1st sem (approved)"
+      - "Curricular units 1st sem (grade)"
+      - "Admission grade"
+      - "Debtor"
+      - "Tuition fees up to date"
+      - "Scholarship holder"
+      - "Age at enrollment"
+      - "Gender"
+      - "approval_rate_sem1"
+      - "financial_stress"
+
+# ============================================================
+# 8. PREPROCESSING PARAMETERS
+# ============================================================
+preprocessing:
+  # Missing value strategy
+  missing_values:
+    numerical_strategy: "median"
+    categorical_strategy: "mode"
+
+  # Encoding strategies
+  encoding:
+    nominal_strategy: "onehot"
+    ordinal_strategy: "passthrough"
+    binary_strategy: "passthrough"
+    onehot_params:
+      drop: "first"
+      sparse: false
+      handle_unknown: "ignore"
+
+  # Scaling
+  scaling:
+    method: "standard"
+    apply_to:
+      - "continuous"
+      - "binary"
+      - "ordinal"
+    exclude:
+      - "onehot_encoded"
+
+  # Feature selection thresholds
+  feature_selection:
+    variance_threshold: 0.01
+    correlation_threshold: 0.95
+    min_importance: 0.001
+
+  # Train-test split
+  data_split:
+    test_size: 0.2
+    validation_size: 0.25  # from training set
+    random_state: 42
+    stratify: true
+    shuffle: true
