@@ -24,7 +24,7 @@ def load_raw_data(filename: str) -> pd.DataFrame:
 
     try:
 
-        df = pd.read_csv(filepath)
+        df = pd.read_csv(filepath, sep=';')
         print(f"Dataset loaded: {df.shape[0]} rows, {df.shape[1]} columns")
         return df
     except FileNotFoundError:
@@ -52,7 +52,7 @@ def load_processed_data(filename: str) -> pd.DataFrame:
 
     try:
 
-        df = pd.read_csv(filepath)
+        df = pd.read_csv(filepath, sep=';')
         print(f"Dataset loaded: {df.shape[0]} rows, {df.shape[1]} columns")
         return df
     except FileNotFoundError:

@@ -1,7 +1,12 @@
+import os
+
 import yaml
 
 
-def load_config(config_path: str = "config/feature_config.yaml") -> dict:
+base_config_path = os.path.join(os.getcwd(), '..', 'config')
+
+
+def load_config(config_path: str = "feature_config.yaml") -> dict:
     """
     Load feature configuration from YAML file.
 
@@ -15,7 +20,7 @@ def load_config(config_path: str = "config/feature_config.yaml") -> dict:
     dict : Configuration dictionary
     """
     try:
-        with open(config_path, 'r') as file:
+        with open(os.path.join(base_config_path, config_path), 'r') as file:
             config = yaml.safe_load(file)
         return config
     except FileNotFoundError:

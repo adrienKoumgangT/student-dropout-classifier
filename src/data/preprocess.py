@@ -55,6 +55,7 @@ def get_mappings_and_binaries(config: dict) -> tuple:
 
     # Process binary features
     for feature in config.get('binary_features', []):
+        # print(f"- feature = {feature}")
         col = feature.get('original_column') or feature.get('name')
         mapping = feature.get('mapping')
         if col:
@@ -62,7 +63,8 @@ def get_mappings_and_binaries(config: dict) -> tuple:
             if mapping:
                 # Convert keys to match data type (handle YAML string keys)
                 categorical_mappings[col] = {
-                    int(k) if k.lstrip('-').isdigit() else k: v
+                    # int(k) if k.lstrip('-').isdigit() else k: v
+                    int(k): v
                     for k, v in mapping.items()
                 }
 
@@ -72,7 +74,8 @@ def get_mappings_and_binaries(config: dict) -> tuple:
         mapping = feature.get('mapping')
         if col and mapping:
             categorical_mappings[col] = {
-                int(k) if k.lstrip('-').isdigit() else k: v
+                # int(k) if k.lstrip('-').isdigit() else k: v
+                int(k): v
                 for k, v in mapping.items()
             }
 
@@ -82,15 +85,15 @@ def get_mappings_and_binaries(config: dict) -> tuple:
         mapping = feature.get('mapping')
         if col and mapping:
             categorical_mappings[col] = {
-                int(k) if k.lstrip('-').isdigit() else k: v
+                # int(k) if k.lstrip('-').isdigit() else k: v
+                int(k): v
                 for k, v in mapping.items()
             }
 
     return categorical_mappings, binary_features
 
 
-def substitute_data(df: pd.DataFrame,
-                    config_path: str = "config/feature_config.yaml") -> pd.DataFrame:
+def substitute_data(df: pd.DataFrame, config_path: str = "feature_config.yaml") -> pd.DataFrame:
     """
     Substitute coded values with descriptive labels from config.
 
@@ -119,13 +122,84 @@ def substitute_data(df: pd.DataFrame,
             df[col] = df[col].map(mapping).astype('object')
 
     # Enforce binary features as integers
-    for col in binary_features:
-        if col in df.columns:
-            df[col] = df[col].astype(int)
+    #for col in binary_features:
+    #    if col in df.columns:
+    #        df[col] = df[col].astype(int)
 
     return df
 
 
+def enforce_data_type(df: pd.DataFrame, config_path: str = "feature_config.yaml") -> pd.DataFrame:
+    """
+    Enforce correct data types based on feature_config.yaml.
+
+    - Binary (0/1) features -> int
+    - Ordinal features -> int
+    - Nominal features (categorical codes) -> category (object-like)
+    - Continuous features -> float
+    """
+    config = load_config(config_path)
+
+    def get_cols(category: str) -> List[str]:
+        """Extract column names from config category."""
+        features = config.get(category, [])
+        cols = []
+
+        if isinstance(features, list):
+            for item in features:
+                if isinstance(item, dict):
+                    cols.append(item.get('original_column') or item.get('name', ''))
+                elif isinstance(item, str):
+                    cols.append(item)
+        elif isinstance(features, dict):
+            for subgroup in features.values():
+                if isinstance(subgroup, list):
+                    for item in subgroup:
+                        if isinstance(item, dict):
+                            cols.append(item.get('original_column') or item.get('name', ''))
+                        elif isinstance(item, str):
+                            cols.append(item)
+        return [c for c in cols if c]
+
+    binary_cols = get_cols('binary_features')
+    ordinal_cols = get_cols('ordinal_features')
+    nominal_cols = get_cols('nominal_features')
+    continuous_cols = get_cols('continuous_features')
+
+    print("Enforcing data types...")
+
+    # Binary -> int
+    for col in binary_cols:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype(int).clip(0, 1)
+            print(f"  {col} -> int (binary)")
+
+    # Ordinal -> int
+    for col in ordinal_cols:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype(int)
+            print(f"  {col} -> int (ordinal)")
+
+    # Nominal -> category (object-like, not numeric)
+    for col in nominal_cols:
+        if col in df.columns:
+            df[col] = df[col].astype(str).astype('object')
+            print(f"  {col} -> category (nominal)")
+
+    # Continuous -> float
+    for col in continuous_cols:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors='coerce').astype(float)
+            print(f"  {col} -> float (continuous)")
+
+    # Target -> category
+    target_col = config.get('target', {}).get('original_column') or config.get('target', {}).get('name', 'Target')
+    if target_col in df.columns:
+        df[target_col] = df[target_col].astype('object')
+        print(f"  {target_col} -> category (target)")
+
+    print(f"Done. Final dtypes:\n{df.dtypes.value_counts()}")
+    return df
 
 
 def get_basic_info(df: pd.DataFrame) -> None:
