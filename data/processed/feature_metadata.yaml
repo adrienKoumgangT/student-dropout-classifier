@@ -1,0 +1,303 @@
+binary_features:
+- Gender
+- Scholarship holder
+- Debtor
+- Tuition fees up to date
+- Displaced
+- Educational special needs
+- International
+- Daytime/evening attendance
+continuous_features:
+- Previous qualification (grade)
+- Admission grade
+- Age at enrollment
+- Curricular units 1st sem (credited)
+- Curricular units 1st sem (enrolled)
+- Curricular units 1st sem (evaluations)
+- Curricular units 1st sem (approved)
+- Curricular units 1st sem (grade)
+- Curricular units 1st sem (without evaluations)
+- Curricular units 2nd sem (credited)
+- Curricular units 2nd sem (enrolled)
+- Curricular units 2nd sem (evaluations)
+- Curricular units 2nd sem (approved)
+- Curricular units 2nd sem (grade)
+- Curricular units 2nd sem (without evaluations)
+- Unemployment rate
+- Inflation rate
+- GDP
+early_features:
+- Gender
+- Scholarship holder
+- Debtor
+- Tuition fees up to date
+- Displaced
+- Educational special needs
+- International
+- Daytime/evening attendance
+- Mother's qualification
+- Father's qualification
+- Course
+- Application mode
+- Application order
+- Mother's occupation
+- Father's occupation
+- Previous qualification
+- Marital status
+- Nacionality
+- Previous qualification (grade)
+- Admission grade
+- Age at enrollment
+- Curricular units 1st sem (credited)
+- Curricular units 1st sem (enrolled)
+- Curricular units 1st sem (evaluations)
+- Curricular units 1st sem (approved)
+- Curricular units 1st sem (grade)
+- Curricular units 1st sem (without evaluations)
+- Unemployment rate
+- Inflation rate
+- GDP
+- approval_rate_sem1
+- grade_momentum
+- evaluation_intensity_sem1
+- credit_utilization_sem1
+- financial_stress
+- parent_education
+- disengagement_sem1
+- perfect_sem1
+feature_cols:
+- Gender
+- Scholarship holder
+- Debtor
+- Tuition fees up to date
+- Displaced
+- Educational special needs
+- International
+- Daytime/evening attendance
+- Mother's qualification
+- Father's qualification
+- Course
+- Application mode
+- Application order
+- Mother's occupation
+- Father's occupation
+- Previous qualification
+- Marital status
+- Nacionality
+- Previous qualification (grade)
+- Admission grade
+- Age at enrollment
+- Curricular units 1st sem (credited)
+- Curricular units 1st sem (enrolled)
+- Curricular units 1st sem (evaluations)
+- Curricular units 1st sem (approved)
+- Curricular units 1st sem (grade)
+- Curricular units 1st sem (without evaluations)
+- Curricular units 2nd sem (credited)
+- Curricular units 2nd sem (enrolled)
+- Curricular units 2nd sem (evaluations)
+- Curricular units 2nd sem (approved)
+- Curricular units 2nd sem (grade)
+- Curricular units 2nd sem (without evaluations)
+- Unemployment rate
+- Inflation rate
+- GDP
+- approval_rate_sem1
+- approval_rate_sem2
+- grade_momentum
+- grade_decline
+- evaluation_intensity_sem1
+- credit_utilization_sem1
+- total_course_load
+- financial_stress
+- parent_education
+- disengagement_sem1
+- perfect_sem1
+label_encoders:
+  Application mode:
+  - '1'
+  - '10'
+  - '15'
+  - '16'
+  - '17'
+  - '18'
+  - '2'
+  - '26'
+  - '27'
+  - '39'
+  - '42'
+  - '43'
+  - '44'
+  - '5'
+  - '51'
+  - '53'
+  - '57'
+  - '7'
+  Application order:
+  - '0'
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  Course:
+  - '171'
+  - '33'
+  - '8014'
+  - '9003'
+  - '9070'
+  - '9085'
+  - '9119'
+  - '9130'
+  - '9147'
+  - '9238'
+  - '9254'
+  - '9500'
+  - '9556'
+  - '9670'
+  - '9773'
+  - '9853'
+  - '9991'
+  Father's occupation:
+  - '0'
+  - '1'
+  - '10'
+  - '101'
+  - '102'
+  - '103'
+  - '112'
+  - '114'
+  - '122'
+  - '123'
+  - '124'
+  - '131'
+  - '135'
+  - '141'
+  - '143'
+  - '144'
+  - '151'
+  - '152'
+  - '153'
+  - '154'
+  - '163'
+  - '171'
+  - '172'
+  - '174'
+  - '175'
+  - '181'
+  - '182'
+  - '183'
+  - '192'
+  - '193'
+  - '194'
+  - '195'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '90'
+  - '99'
+  Marital status:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  Mother's occupation:
+  - '0'
+  - '1'
+  - '10'
+  - '123'
+  - '125'
+  - '132'
+  - '134'
+  - '141'
+  - '143'
+  - '144'
+  - '151'
+  - '152'
+  - '153'
+  - '171'
+  - '175'
+  - '191'
+  - '192'
+  - '193'
+  - '194'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '90'
+  - '99'
+  Nacionality:
+  - '1'
+  - '100'
+  - '101'
+  - '103'
+  - '105'
+  - '109'
+  - '11'
+  - '13'
+  - '14'
+  - '17'
+  - '2'
+  - '21'
+  - '22'
+  - '24'
+  - '25'
+  - '26'
+  - '41'
+  - '6'
+  - '62'
+  Previous qualification:
+  - '1'
+  - '10'
+  - '12'
+  - '14'
+  - '15'
+  - '19'
+  - '2'
+  - '3'
+  - '38'
+  - '39'
+  - '4'
+  - '40'
+  - '42'
+  - '43'
+  - '5'
+  - '6'
+  - '9'
+new_features:
+- approval_rate_sem1
+- approval_rate_sem2
+- grade_momentum
+- grade_decline
+- evaluation_intensity_sem1
+- credit_utilization_sem1
+- total_course_load
+- financial_stress
+- parent_education
+- disengagement_sem1
+- perfect_sem1
+nominal_features:
+- Course
+- Application mode
+- Application order
+- Mother's occupation
+- Father's occupation
+- Previous qualification
+- Marital status
+- Nacionality
+ordinal_features:
+- Mother's qualification
+- Father's qualification

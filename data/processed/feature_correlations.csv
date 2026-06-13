@@ -1,0 +1,34 @@
+,Dropout_numeric
+financial_stress,0.4926511530932525
+Age at enrollment,0.2672293831633243
+Debtor,0.2672071989294785
+Gender,0.2519548119534264
+Curricular units 2nd sem (without evaluations),0.10268682857663428
+Curricular units 1st sem (without evaluations),0.07464226018538009
+Mother's qualification,0.053988794962507795
+Inflation rate,0.030325865974636074
+Educational special needs,0.0072536541421773905
+Father's qualification,0.005865479932260557
+enrollment_change,0.00020964626397830164
+Unemployment rate,-0.004198105226526011
+International,-0.006181262165854315
+Curricular units 1st sem (credited),-0.04690001650294807
+GDP,-0.05026014681835987
+Curricular units 2nd sem (credited),-0.05240197115911629
+Curricular units 1st sem (evaluations),-0.05978625949022741
+Daytime/evening attendance,-0.08449593574263142
+Previous qualification (grade),-0.10946365310011329
+Curricular units 2nd sem (evaluations),-0.11923876678097012
+Displaced,-0.12611303526795556
+Admission grade,-0.12805771615451303
+Curricular units 1st sem (enrolled),-0.1610735163889365
+Curricular units 2nd sem (enrolled),-0.18289654087432566
+grade_change,-0.23314807699810458
+Scholarship holder,-0.3130176625890691
+Tuition fees up to date,-0.4421375757680647
+Curricular units 1st sem (grade),-0.519927093532775
+Curricular units 1st sem (approved),-0.5548808565333473
+Curricular units 2nd sem (grade),-0.605350125922988
+Curricular units 2nd sem (approved),-0.6539952460991428
+approval_rate_sem1,-0.7231471737959114
+approval_rate_sem2,-0.7891888917657672
