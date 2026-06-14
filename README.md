@@ -789,7 +789,7 @@ pyyaml
 xgboost
 joblib
 jinja2
-sharp
+shap
 ```
 
 ### 14.2 Install All Dependencies
@@ -837,6 +837,7 @@ This project is licensed under the MIT License, see the [LICENSE](LICENSE) file 
 - [pandas](https://pandas.pydata.org/) : Data manipulation
 - [matplotlib](https://matplotlib.org/) and [seaborn](https://seaborn.pydata.org/) : Visualization
 - [Jupyter](https://jupyter.org/) : Interactive computing
+- [Shap](https://shap.readthedocs.io/en/latest/index.html) : Game Theoretic approach to explain the output of any machine learning model
 
 ### 17.3 Professors
 
