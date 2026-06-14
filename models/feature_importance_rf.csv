@@ -1,0 +1,52 @@
+Feature,Importance
+approval_rate_sem2,0.15676702791822814
+failed_units_total,0.13588573036357188
+failed_units_sem2,0.10019131230821368
+Curricular units 2nd sem (approved),0.09730315262036898
+approval_rate_sem1,0.06797787405172923
+failed_units_sem1,0.05850457692590299
+Curricular units 2nd sem (grade),0.0448229181528013
+Curricular units 1st sem (approved),0.03504307088936537
+perfect_sem1,0.028426686192394385
+Curricular units 1st sem (grade),0.0267165113527473
+financial_stress,0.02274404002650857
+grade_momentum,0.021396885355272937
+grade_per_approved_unit_sem1,0.02029214457685983
+Tuition fees up to date,0.014212512518876197
+grade_decline,0.011363884201351319
+Curricular units 2nd sem (evaluations),0.010729159849441098
+Admission grade,0.010573176851176876
+Course,0.01002858310758504
+Previous qualification (grade),0.009573134211619792
+Age at enrollment,0.009490755901460758
+evaluation_intensity_sem1,0.00864459220557788
+Scholarship holder,0.008205307618294452
+parent_education,0.007708080446746572
+Application mode,0.006932434413459502
+Father's occupation,0.006125365996173348
+Curricular units 1st sem (evaluations),0.006069554505642586
+Unemployment rate,0.005988051009066331
+GDP,0.0057596537754155425
+Mother's occupation,0.005213615999487418
+Debtor,0.005172042339052131
+Inflation rate,0.005049355519654857
+Application order,0.004791574146298587
+Curricular units 2nd sem (enrolled),0.004288488622184771
+Mother's qualification,0.004213174653731434
+Father's qualification,0.0041842409538207686
+total_course_load,0.004067174535219455
+Curricular units 1st sem (enrolled),0.0037906757486996633
+Gender,0.002736261396970106
+credit_utilization_sem1,0.002358510379975959
+Displaced,0.0015787455783994359
+Curricular units 1st sem (credited),0.0013049606745907348
+Curricular units 1st sem (without evaluations),0.0008848822098894894
+Curricular units 2nd sem (credited),0.0008360072361709818
+Previous qualification,0.0006715497706810201
+disengagement_sem1,0.0006580689625191767
+Daytime/evening attendance,0.0002406528023342945
+Curricular units 2nd sem (without evaluations),0.0002336974917305491
+Marital status,0.0002264159037075767
+Nacionality,1.746898406550106e-05
+International,6.258744964335086e-06
+Educational special needs,0.0

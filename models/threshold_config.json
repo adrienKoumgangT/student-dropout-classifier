@@ -1,0 +1,7 @@
+{
+  "best_model": "XGBoost (Tuned)",
+  "optimal_f1_threshold": 0.6200000000000001,
+  "optimal_balanced_threshold": 0.56,
+  "default_threshold": 0.5,
+  "features_used": 51
+}

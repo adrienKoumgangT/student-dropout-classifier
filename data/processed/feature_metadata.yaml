@@ -65,6 +65,12 @@ early_features:
 - parent_education
 - disengagement_sem1
 - perfect_sem1
+- failed_units_sem1
+- grade_per_approved_unit_sem1
+failed_units_features:
+- failed_units_sem1
+- failed_units_sem2
+- failed_units_total
 feature_cols:
 - Gender
 - Scholarship holder
@@ -113,6 +119,10 @@ feature_cols:
 - parent_education
 - disengagement_sem1
 - perfect_sem1
+- failed_units_sem1
+- failed_units_sem2
+- failed_units_total
+- grade_per_approved_unit_sem1
 label_encoders:
   Application mode:
   - '1'
@@ -289,6 +299,10 @@ new_features:
 - parent_education
 - disengagement_sem1
 - perfect_sem1
+- failed_units_sem1
+- failed_units_sem2
+- failed_units_total
+- grade_per_approved_unit_sem1
 nominal_features:
 - Course
 - Application mode
