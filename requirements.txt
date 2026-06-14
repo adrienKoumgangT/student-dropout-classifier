@@ -8,3 +8,4 @@ pyyaml
 xgboost
 joblib
 jinja2
+shap

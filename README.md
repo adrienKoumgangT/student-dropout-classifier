@@ -69,8 +69,8 @@ This project builds a machine learning pipeline to predict whether a student wil
 | KNN (k=10) | 0.9483 | 0.8493 | **0.9559** | 0.7641 |
 
 - **All models > 94% ROC-AUC**
-- **Early intervention possible** — 1st semester data retains ~97% of full model performance
-- **Seed stability verified** — all models stable across 5 random seeds (std < 0.2%)
+- **Early intervention possible** - 1st semester data retains ~97% of full model performance
+- **Seed stability verified** - all models stable across 5 random seeds (std < 0.2%)
 
 ---
 
@@ -80,7 +80,7 @@ This project builds a machine learning pipeline to predict whether a student wil
 
 ## 4. Dataset
 
-**Source**: [Predict Students' Dropout and Academic Success](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success) — UCI Machine Learning Repository
+**Source**: [Predict Students' Dropout and Academic Success](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success) - UCI Machine Learning Repository
 
 | Property | Value |
 |----------|-------|
@@ -179,28 +179,28 @@ The correlation strength categories follow these thresholds:
 
 #### 6.1.1 Risk Factors (Positive Correlation)
 
-| Feature | Correlation | Strength | Description |
-|---------|:----------:|:--------:|-------------|
-| `failed_units_sem2` | **+0.737** | Very Strong | Courses enrolled but NOT passed in 2nd semester. The strongest risk indicator — students failing courses are at extreme risk. |
-| `failed_units_total` | **+0.732** | Very Strong | Total failed units across both semesters. Cumulative failure is a powerful dropout predictor. |
-| `failed_units_sem1` | **+0.673** | Strong | Courses enrolled but NOT passed in 1st semester. Early academic struggle is a clear warning sign. |
-| `financial_stress` | **+0.493** | Moderate | Composite score (0-3): debtor + late tuition + no scholarship. Financial pressure significantly compounds dropout risk. |
-| `grade_decline` | **+0.233** | Weak-Moderate | Drop in average grade from 1st to 2nd semester. A declining trajectory indicates disengagement. |
-| `disengagement_sem1` | **+0.085** | Weak | Binary flag: enrolled in courses but took zero evaluations. A small but notable disengagement signal. |
-| `grade_per_approved_unit_sem1` | **+0.079** | Weak | Average grade divided by approved units (efficiency metric). Slightly higher for dropouts (may reflect easier course loads). |
-| `evaluation_intensity_sem1` | **+0.053** | Negligible | Average evaluations per enrolled course. Minimal direct correlation — context-dependent. |
-| `parent_education` | **+0.034** | Negligible | Average of mother's and father's qualification levels. Very weak direct correlation with dropout. |
+| Feature | Correlation | Strength | Description                                                                                                                   |
+|---------|:----------:|:--------:|-------------------------------------------------------------------------------------------------------------------------------|
+| `failed_units_sem2` | **+0.737** | Very Strong | Courses enrolled but NOT passed in 2nd semester. The strongest risk indicator - students failing courses are at extreme risk. |
+| `failed_units_total` | **+0.732** | Very Strong | Total failed units across both semesters. Cumulative failure is a powerful dropout predictor.                                 |
+| `failed_units_sem1` | **+0.673** | Strong | Courses enrolled but NOT passed in 1st semester. Early academic struggle is a clear warning sign.                             |
+| `financial_stress` | **+0.493** | Moderate | Composite score (0-3): debtor + late tuition + no scholarship. Financial pressure significantly compounds dropout risk.       |
+| `grade_decline` | **+0.233** | Weak-Moderate | Drop in average grade from 1st to 2nd semester. A declining trajectory indicates disengagement.                               |
+| `disengagement_sem1` | **+0.085** | Weak | Binary flag: enrolled in courses but took zero evaluations. A small but notable disengagement signal.                         |
+| `grade_per_approved_unit_sem1` | **+0.079** | Weak | Average grade divided by approved units (efficiency metric). Slightly higher for dropouts (may reflect easier course loads).  |
+| `evaluation_intensity_sem1` | **+0.053** | Negligible | Average evaluations per enrolled course. Minimal direct correlation - context-dependent.                                      |
+| `parent_education` | **+0.034** | Negligible | Average of mother's and father's qualification levels. Very weak direct correlation with dropout.                             |
 
 #### 6.1.2 Protective Factors (Negative Correlation)
 
-| Feature | Correlation | Strength | Description |
-|---------|:----------:|:--------:|-------------|
-| `credit_utilization_sem1` | **-0.026** | Negligible | Ratio of credited courses to enrolled courses. Minimal protective effect — prior credits help slightly. |
-| `total_course_load` | **-0.174** | Weak | Total courses enrolled across both semesters. Higher course load slightly associated with graduation (engaged students take more courses). |
-| `grade_momentum` | **-0.477** | Moderate | Improvement from admission grade to 1st semester grade. Students who outperform their admission scores are more likely to persist. |
-| `perfect_sem1` | **-0.494** | Moderate | Binary flag: passed ALL enrolled courses in 1st semester. A perfect first semester is a strong graduation signal. |
-| `approval_rate_sem1` | **-0.670** | Strong | Percentage of enrolled courses passed in 1st semester. The most actionable early predictor — available after just one semester. |
-| `approval_rate_sem2` | **-0.740** | Very Strong | Percentage of enrolled courses passed in 2nd semester. The single strongest predictor overall — passing courses is the ultimate retention metric. |
+| Feature | Correlation | Strength | Description                                                                                                                                       |
+|---------|:----------:|:--------:|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| `credit_utilization_sem1` | **-0.026** | Negligible | Ratio of credited courses to enrolled courses. Minimal protective effect - prior credits help slightly.                                           |
+| `total_course_load` | **-0.174** | Weak | Total courses enrolled across both semesters. Higher course load slightly associated with graduation (engaged students take more courses).        |
+| `grade_momentum` | **-0.477** | Moderate | Improvement from admission grade to 1st semester grade. Students who outperform their admission scores are more likely to persist.                |
+| `perfect_sem1` | **-0.494** | Moderate | Binary flag: passed ALL enrolled courses in 1st semester. A perfect first semester is a strong graduation signal.                                 |
+| `approval_rate_sem1` | **-0.670** | Strong | Percentage of enrolled courses passed in 1st semester. The most actionable early predictor - available after just one semester.                   |
+| `approval_rate_sem2` | **-0.740** | Very Strong | Percentage of enrolled courses passed in 2nd semester. The single strongest predictor overall - passing courses is the ultimate retention metric. |
 
 
 ### 6.2 Key Insights
@@ -217,7 +217,7 @@ The correlation strength categories follow these thresholds:
 ### 6.3 How These Features Were Created
 
 ```python
-# Failed units (enrolled but NOT passed) — fixes multicollinearity
+# Failed units (enrolled but NOT passed) - fixes multicollinearity
 failed_units_sem1 = enrolled_1st_sem - approved_1st_sem
 failed_units_sem2 = enrolled_2nd_sem - approved_2nd_sem
 failed_units_total = failed_units_sem1 + failed_units_sem2
@@ -239,12 +239,12 @@ approval_rate_sem2 = (approved_2nd_sem / enrolled_2nd_sem) * 100
 
 The `failed_units` features were created specifically to fix counter-intuitive Logistic Regression coefficients where `Curricular units 1st sem (enrolled)` appeared as a **risk factor** (+0.89) due to multicollinearity with `approved`. After the fix:
 
-| Feature | Coefficient | Status |
-|---------|:----------:|--------|
-| `failed_units_sem1` | **+0.673** | Correct — failing courses IS a risk factor |
-| `failed_units_sem2` | **+0.737** | Correct — failing courses IS a risk factor |
-| `failed_units_total` | **+0.732** | Correct — cumulative failure IS a risk factor |
-| `Curricular units 1st sem (enrolled)` | *now reduced/negative* | Fixed — enrolling in courses is no longer flagged as risky |
+| Feature | Coefficient | Status                                                     |
+|---------|:----------:|------------------------------------------------------------|
+| `failed_units_sem1` | **+0.673** | Correct - failing courses IS a risk factor                 |
+| `failed_units_sem2` | **+0.737** | Correct - failing courses IS a risk factor                 |
+| `failed_units_total` | **+0.732** | Correct - cumulative failure IS a risk factor              |
+| `Curricular units 1st sem (enrolled)` | *now reduced/negative* | Fixed - enrolling in courses is no longer flagged as risky |
 
 ---
 
@@ -261,6 +261,8 @@ All models were evaluated on a held-out test set (726 students, 39.1% dropout ra
 | **Random Forest** | 0.9215 | 0.8822 | 0.9225 | 0.9019 | 0.9716 | 0.260s |
 | Decision Tree | 0.8802 | 0.8147 | 0.8979 | 0.8543 | 0.9559 | 0.014s |
 | KNN (k=10) | 0.8939 | **0.9559** | 0.7641 | 0.8493 | 0.9483 | 0.002s |
+
+![Metrics Baseline Comparison](reports/figures/metrics_comparison.png)
 
 ### 7.2 Best Model by Metric
 
@@ -330,7 +332,7 @@ The **early intervention model** uses only data available after the 1st semester
 | Logistic Regression | 0.9755 | 0.9455 | **96.9%** |
 
 > **Key Finding**: Using only 1st semester data, we retain ~97% of the full model's predictive power. 
-> This enables intervention before the 2nd semester begins — when there's still time to help struggling students.
+> This enables intervention before the 2nd semester begins - when there's still time to help struggling students.
 
 ### 8.2 Features Available for Early Intervention
 
@@ -365,12 +367,12 @@ But retains all 1st semester features including the powerful early predictors:
 
 ### 9.2 Risk Tier System
 
-| Risk Level | Probability Range | Recommended Action | Expected Precision |
-|:----------:|:-----------------:|--------------------|:------------------:|
-| **Critical** | > 0.75 | Immediate mandatory intervention — advisor meeting required | ~95% |
-| **High** | 0.55 - 0.75 | Schedule advisor meeting within 1 week | ~90% |
-| **Moderate** | 0.35 - 0.55 | Send support resources, monitor academic progress | ~85% |
-| **Low** | < 0.35 | Standard academic support services | — |
+| Risk Level | Probability Range | Recommended Action                                          | Expected Precision |
+|:----------:|:-----------------:|-------------------------------------------------------------|:------------------:|
+| **Critical** | > 0.75 | Immediate mandatory intervention - advisor meeting required |        ~95%        |
+| **High** | 0.55 - 0.75 | Schedule advisor meeting within 1 week                      |        ~90%        |
+| **Moderate** | 0.35 - 0.55 | Send support resources, monitor academic progress           |        ~85%        |
+| **Low** | < 0.35 | Standard academic support services                          |         -          |
 
 ### 9.3 Threshold Optimization
 
@@ -382,6 +384,8 @@ Optimal thresholds were determined by maximizing F1-score on the validation set:
 | Balance Precision/Recall | **0.52** | P=0.901, R=0.901, F1=0.901 |
 | Maximize Recall (catch all) | **0.35** | P=0.840, R=0.958, F1=0.895 |
 | Maximize Precision (no false alarms) | **0.65** | P=0.955, R=0.764, F1=0.849 |
+
+![Threeshold Optimization](reports/figures/threshold_optimization.png)
 
 ---
 
@@ -442,7 +446,7 @@ The most predictive single metric is **2nd semester approval rate** (correlation
 ### 11.2. Failed Units Fix Critical Multicollinearity
 
 Before creating `failed_units` features, the model incorrectly flagged "courses enrolled" as a dropout risk factor (coefficient: +0.89). 
-This was a multicollinearity artifact — enrolling in more courses correlated with passing more courses. 
+This was a multicollinearity artifact - enrolling in more courses correlated with passing more courses. 
 By separating `failed_units = enrolled − approved`, we fixed this:
 - `failed_units` correctly identified as risk factors (coefficients: +1.51, +1.40)
 - `enrolled` no longer falsely appears as risky
@@ -468,11 +472,214 @@ This suggests the decision boundary between dropout and graduation is largely li
 
 ---
 
-## 12. Output Files
+
+Here's a comprehensive Explainable AI section for your README:
+
+---
+
+## 12. Explainable AI and Model Interpretation
+
+> *"Why did the model flag this student as high risk?"*
+
+Understanding **why** a model makes a prediction is as important as the prediction itself - especially in education, where decisions affect real students' lives. 
+We used multiple techniques to explain our models.
+
+### 12.1 Techniques Used
+
+| Technique | Models | What It Shows |
+|-----------|--------|---------------|
+| **SHAP Values** | LR, RF, XGBoost | How each feature contributes to individual predictions |
+| **SHAP Summary Plot** | LR, RF, XGBoost | Global feature importance with direction of impact |
+| **SHAP Waterfall Plot** | LR, RF, XGBoost | Step-by-step breakdown of a single prediction |
+| **SHAP Dependence Plot** | RF | How feature values affect predictions (non-linear patterns) |
+| **Logistic Regression Coefficients** | LR | Direct odds ratios — "each failed unit increases dropout odds by 4.55x" |
+| **Partial Dependence Plots** | RF | Average marginal effect of features |
+| **ICE Plots** | RF | Individual prediction trajectories |
+| **Decision Tree Visualization** | DT | Human-readable decision rules |
+
+
+### 12.2 SHAP Summary: What Drives Dropout Predictions?
+
+![SHAP Summary](reports/figures/shap_summary_rf.png)
+
+*SHAP beeswarm plot for Random Forest. Red = high feature value, Blue = low feature value. Positive SHAP = pushes toward Dropout prediction.*
+
+**Top features by SHAP importance (Random Forest):**
+
+| Feature | Mean \|SHAP\| |         Direction          | Interpretation |
+|---------|:------------:|:--------------------------:|----------------|
+| `approval_rate_sem2` | Highest |   Low values -> Dropout    | Students passing fewer courses are at highest risk |
+| `approval_rate_sem1` | Very High |   Low values -> Dropout  | Early pass rate is a critical early warning signal |
+| `financial_stress` | High |  High values -> Dropout  | Debt + late fees + no scholarship compound risk |
+| `failed_units_sem1` | High |  High values -> Dropout  | Each failed course significantly increases risk |
+| `grade_momentum` | Moderate |  Low/negative -> Dropout | Declining performance trajectory is a red flag |
+
+
+### 12.3 Explaining a Single Prediction
+
+How the model arrives at a specific risk score for one student:
+
+![SHAP Waterfall](reports/figures/shap_waterfall_rf.png)
+
+*SHAP waterfall plot for a single student. Red arrows push the prediction toward "Dropout", blue arrows push toward "Graduate".*
+
+**Example: Low-Risk Student (Predicted Dropout Probability: 11.9%)**
+
+| Factor | Impact | Direction  |
+|--------|:------:|:----------:|
+| Base value (average prediction) | 49.9% |     —      |
+| High `approval_rate_sem1` (100%) | -15.2% | Protective |
+| High `approval_rate_sem2` (100%) | -12.8% | Protective |
+| Low `financial_stress` (0) | -5.3% | Protective |
+| Good `grade_momentum` (+1.5) | -3.1% | Protective |
+| Zero `failed_units_sem1` | -1.8% | Protective |
+| **Final Prediction** | **11.9%** |  Low Risk  |
+
+
+### 12.4 Logistic Regression: Directly Interpretable
+
+Since Logistic Regression is a linear model, each feature has a single coefficient that directly quantifies its impact:
+
+![LR Coefficients](reports/figures/lr_coefficients.png)
+
+**Key Odds Ratios:**
+
+| Feature | Odds Ratio | Plain English |
+|---------|:----------:|---------------|
+| `failed_units_sem1` | **4.55x** | Each failed course in 1st semester multiplies dropout odds by 4.55 |
+| `failed_units_sem2` | **4.06x** | Each failed course in 2nd semester multiplies dropout odds by 4.06 |
+| `financial_stress` | **1.79x** | Each point on the financial stress scale increases dropout odds by 79% |
+| `approval_rate_sem1` | **0.64x** | Each 1% increase in pass rate reduces dropout odds by 36% |
+| `approval_rate_sem2` | **0.28x** | Each 1% increase in pass rate reduces dropout odds by 72% |
+| `Tuition fees up to date` | **0.63x** | Students with current tuition have 37% lower dropout odds |
+| `Scholarship holder` | **0.83x** | Scholarship holders have 17% lower dropout odds |
+
+
+### 12.5 Decision Tree: Human-Readable Rules
+
+A simplified decision tree (depth=3) showing the key decision paths:
+
+![Decision Tree](reports/figures/decision_tree.png)
+
+**Top decision rules extracted:**
+
+```
+1. IF approval_rate_sem2 <= 50%
+   THEN predict DROPOUT (85% probability)
+
+2. IF approval_rate_sem2 > 50% AND approval_rate_sem1 <= 75%
+   THEN predict DROPOUT (62% probability)
+
+3. IF approval_rate_sem2 > 50% AND approval_rate_sem1 > 75% 
+   AND financial_stress > 1
+   THEN predict DROPOUT (55% probability)
+
+4. IF approval_rate_sem2 > 50% AND approval_rate_sem1 > 75% 
+   AND financial_stress <= 1
+   THEN predict GRADUATE (89% probability)
+```
+
+---
+
+### 12.6 SHAP Comparison Across Models
+
+All three models largely agree on the most important features:
+
+![SHAP Comparison](reports/figures/shap_comparison.png)
+
+| Feature | LR | RF | XGB | Consensus |
+|---------|:--:|:--:|:---:|:---------:|
+| `approval_rate_sem2` | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | **Strong agreement** |
+| `approval_rate_sem1` | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | Strong agreement |
+| `financial_stress` | ⭐⭐ | ⭐⭐ | ⭐⭐ | Moderate agreement |
+| `failed_units_sem1` | ⭐⭐ | ⭐⭐ | ⭐⭐⭐ | Moderate agreement |
+| `grade_momentum` | ⭐ | ⭐⭐ | ⭐⭐ | Moderate agreement |
+
+
+### 12.7 Partial Dependence: Non-Linear Patterns
+
+How predictions change as feature values vary:
+
+![Partial Dependence](reports/figures/partial_dependence.png)
+
+**Key non-linear patterns discovered:**
+
+| Feature | Pattern | Insight |
+|---------|---------|---------|
+| `approval_rate_sem1` | Sharp drop in risk above 50% pass rate | **Threshold effect**: the biggest gain comes from passing at least half your courses |
+| `financial_stress` | Risk increases linearly with each stress point | Each additional financial burden adds roughly equal risk |
+| `failed_units_sem1` | Risk rises sharply at 1+ failed units | **Zero tolerance**: even one failed course significantly impacts risk |
+| `grade_momentum` | Risk drops as momentum increases | Positive trajectory (improving from admission) is strongly protective |
+
+
+### 12.8 Stakeholder Summary: What We Learned
+
+```
+═══════════════════════════════════════════════════════════════
+ WHAT THE MODEL LEARNED ABOUT STUDENT DROPOUT
+═══════════════════════════════════════════════════════════════
+
+THE #1 PREDICTOR: Course Pass Rates
+────────────────────────────────────
+Students who pass most of their enrolled courses are dramatically 
+less likely to drop out. Every 10% increase in 1st semester pass 
+rate reduces dropout risk by approximately 36%.
+
+EARLY WARNING SIGN: Failed Units in 1st Semester
+────────────────────────────────────────────────
+Each course a student enrolls in but fails to pass increases their 
+dropout odds by 4.55x. This is available after just one semester.
+
+FINANCIAL STRESS COMPOUNDS ACADEMIC RISK
+────────────────────────────────────────
+Students with outstanding debt, late tuition payments, and no 
+scholarship have significantly higher dropout rates, even when 
+controlling for academic performance.
+
+TRAJECTORY MATTERS
+──────────────────
+A student whose grades are declining between semesters is at 
+higher risk than a student with stable low grades. The direction 
+of change is as important as the absolute level.
+
+TOP 5 ACTIONABLE INTERVENTIONS
+──────────────────────────────
+1. Monitor 1st semester pass rates — intervene if < 50%
+2. Flag students with any failed units in 1st semester
+3. Prioritize financial aid for students with high financial stress
+4. Track grade trends — declining grades are a red flag
+5. Celebrate perfect semesters — students passing all courses 
+   have dramatically lower dropout risk
+```
+
+
+### 12.9 How to Use These Explanations
+
+| Audience | Best Technique | Why |
+|----------|---------------|-----|
+| **Academic Advisors** | Waterfall plot + Decision rules | Shows exactly why a specific student is flagged |
+| **Administrators** | SHAP summary + Odds ratios | Identifies systemic factors to address |
+| **Students** | Simple feature importance | Explains what they can do to improve |
+| **Data Scientists** | SHAP values + PDP | Validates model behavior and finds improvements |
+| **Policy Makers** | Odds ratios + Partial dependence | Quantifies impact of interventions (e.g., scholarships) |
+
+
+### 12.10 Model Trustworthiness Checklist
+
+- [x] **All models agree** on top features (SHAP comparison)
+- [x] **Coefficients are intuitive** (passing courses = protective, failing = risk)
+- [x] **No data leakage** (2nd semester features excluded from early model)
+- [x] **Seed stability verified** (predictions stable across 5 random seeds)
+- [x] **Multicollinearity addressed** (failed_units features separate enrollment from failure)
+- [x] **Predictions are explainable** (any single prediction can be broken down with waterfall plot)
+
+---
+
+## 13. Output Files
 
 After running all notebooks, the following files are generated:
 
-### 12.1 Data Files (`data/processed/`)
+### 13.1 Data Files (`data/processed/`)
 
 | File | Description |
 |------|-------------|
@@ -486,7 +693,7 @@ After running all notebooks, the following files are generated:
 | `feature_metadata.yaml` | Feature lists, types, and encoding mappings |
 | `selected_features.csv` | Features selected for 95% importance |
 
-### 12.2 Model Files (`models/`)
+### 13.2 Model Files (`models/`)
 
 | File | Description |
 |------|-------------|
@@ -506,33 +713,70 @@ After running all notebooks, the following files are generated:
 | `seed_sensitivity.csv` | Seed stability analysis results |
 | `deployment_config.json` | Deployment configuration |
 
-### 12.3 Figures (`reports/figures/`)
+### 13.3 Figures (`reports/figures/`)
 
-| File | Description |
-|------|-------------|
-| `target_distribution.png` | Class balance visualization |
-| `correlation_heatmap.png` | Feature correlation matrix |
-| `dropout_by_demographics.png` | Dropout rates by demographic groups |
-| `academic_performance_distribution.png` | Grade distributions by outcome |
-| `dropout_by_financial.png` | Dropout by financial status |
-| `academic_trajectory.png` | Semester-over-semester changes |
-| `eda_dashboard.png` | Comprehensive EDA summary |
-| `roc_curves.png` | ROC curves for all models |
-| `metrics_comparison.png` | Model performance comparison |
-| `confusion_matrices.png` | Confusion matrices |
-| `feature_importance.png` | Feature importance charts |
-| `feature_coefficients.png` | Logistic Regression coefficients |
-| `learning_curves.png` | Random Forest learning curves |
-| `probability_distributions.png` | Prediction probability histograms |
-| `threshold_optimization.png` | Precision-Recall vs Threshold |
-| `feature_selection.png` | Cumulative feature importance |
-| `baseline_vs_tuned.png` | Baseline vs tuned comparison |
+| File | Description | Generated In |
+|------|-------------|:------------:|
+| **Exploratory Data Analysis** | | |
+| `target_distribution.png` | Class balance visualization (Dropout vs Graduate) | `01_initial_exploration.ipynb` |
+| `correlation_heatmap.png` | Feature correlation matrix with dropout | `02_eda_visualization.ipynb` |
+| `dropout_by_demographics.png` | Dropout rates by demographic groups (Gender, Age, Nationality) | `02_eda_visualization.ipynb` |
+| `academic_performance_distribution.png` | Grade distributions by outcome (Graduate vs Dropout) | `02_eda_visualization.ipynb` |
+| `dropout_by_financial.png` | Dropout by financial status (Debtor, Tuition, Scholarship) | `02_eda_visualization.ipynb` |
+| `academic_trajectory.png` | Semester-over-semester changes (grades, approvals, course load) | `02_eda_visualization.ipynb` |
+| `dropout_by_course.png` | Dropout rate analysis by degree program | `02_eda_visualization.ipynb` |
+| `pair_plot_academic.png` | Multivariate relationships between key academic features | `02_eda_visualization.ipynb` |
+| `economic_indicators.png` | Distribution of economic indicators by outcome | `02_eda_visualization.ipynb` |
+| `eda_dashboard.png` | Comprehensive 7-panel EDA summary dashboard | `02_eda_visualization.ipynb` |
+| **Feature Engineering** | | |
+| `feature_importance_preview.png` | Quick feature importance check after engineering | `03_feature_engineering.ipynb` |
+| **Model Performance** | | |
+| `roc_curves.png` | ROC curves for all 5 baseline models | `04_baseline_models.ipynb` |
+| `metrics_comparison.png` | Side-by-side model performance comparison bar chart | `04_baseline_models.ipynb` |
+| `confusion_matrices.png` | Confusion matrices for all models | `04_baseline_models.ipynb` |
+| `learning_curves.png` | Random Forest learning curves (train vs validation) | `04_baseline_models.ipynb` |
+| `probability_distributions.png` | Prediction probability histograms by actual class | `04_baseline_models.ipynb` |
+| `model_comparison_table.png` | Styled performance comparison table | `04_baseline_models.ipynb` |
+| **Hyperparameter Tuning** | | |
+| `baseline_vs_tuned.png` | Baseline vs tuned model performance comparison | `05_hyperparameter_tuning.ipynb` |
+| `threshold_optimization.png` | Precision-Recall vs Threshold for optimal cutoff | `05_hyperparameter_tuning.ipynb` |
+| `feature_selection.png` | Cumulative feature importance analysis | `05_hyperparameter_tuning.ipynb` |
+| **Model Interpretation (Explainable AI)** | | |
+| `shap_summary_lr.png` | SHAP beeswarm summary — Logistic Regression | `06_model_interpretation.ipynb` |
+| `shap_summary_rf.png` | SHAP beeswarm summary — Random Forest | `06_model_interpretation.ipynb` |
+| `shap_summary_xgb.png` | SHAP beeswarm summary — XGBoost | `06_model_interpretation.ipynb` |
+| `shap_bar_lr.png` | SHAP feature importance bar chart — Logistic Regression | `06_model_interpretation.ipynb` |
+| `shap_bar_rf.png` | SHAP feature importance bar chart — Random Forest | `06_model_interpretation.ipynb` |
+| `shap_bar_xgb.png` | SHAP feature importance bar chart — XGBoost | `06_model_interpretation.ipynb` |
+| `shap_waterfall_lr.png` | Single prediction explanation — Logistic Regression | `06_model_interpretation.ipynb` |
+| `shap_waterfall_rf.png` | Single prediction explanation — Random Forest | `06_model_interpretation.ipynb` |
+| `shap_waterfall_xgb.png` | Single prediction explanation — XGBoost | `06_model_interpretation.ipynb` |
+| `shap_force_lr.png` | SHAP force plot — Logistic Regression (single sample) | `06_model_interpretation.ipynb` |
+| `shap_dependence_rf.png` | SHAP dependence plots for key features — Random Forest | `06_model_interpretation.ipynb` |
+| `shap_comparison.png` | Cross-model SHAP importance comparison | `06_model_interpretation.ipynb` |
+| `lr_coefficients.png` | Logistic Regression coefficient chart (Risk vs Protective) | `06_model_interpretation.ipynb` |
+| `rf_feature_importance.png` | Random Forest built-in feature importance | `06_model_interpretation.ipynb` |
+| `decision_tree.png` | Visualized decision tree (depth=3) with rules | `06_model_interpretation.ipynb` |
+| `partial_dependence.png` | Partial dependence plots for key features | `06_model_interpretation.ipynb` |
+| `ice_plot.png` | Individual Conditional Expectation plot | `06_model_interpretation.ipynb` |
+
+
+**Quick Summary by Category**
+
+| Category | Count | Key Figures |
+|----------|:-----:|-------------|
+| **EDA** | 10 | Dashboard, correlation heatmap, demographic analysis |
+| **Feature Engineering** | 1 | Feature importance preview |
+| **Model Performance** | 6 | ROC curves, confusion matrices, learning curves |
+| **Hyperparameter Tuning** | 3 | Baseline vs tuned, threshold optimization, feature selection |
+| **Explainable AI** | 14 | SHAP plots, coefficients, decision tree, PDP/ICE |
+| **Total** | **34** | |
 
 ---
 
-## 13. Dependencies
+## 14. Dependencies
 
-### 13.1 Core Requirements
+### 14.1 Core Requirements
 
 ```text
 pandas
@@ -545,9 +789,10 @@ pyyaml
 xgboost
 joblib
 jinja2
+sharp
 ```
 
-### 13.2 Install All Dependencies
+### 14.2 Install All Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -555,37 +800,37 @@ pip install -r requirements.txt
 
 ---
 
-## 12. Contributors
+## 15. Contributors
 
-### 12.1 Adrien Koumgang Tegantchouang
+### 15.1 Adrien Koumgang Tegantchouang
 
 - GitHub: [@adrienKoumgangT](https://github.com/adrienKoumgangT)
 - Email: adrientkoumgang@gmail.com
 - LinkedIn: [@adrien-koumgang-tegantchouang](https://www.linkedin.com/in/adrien-koumgang-tegantchouang/)
 
-### 12.2 Biya Girma Muluwork
+### 15.2 Biya Girma Muluwork
 
 - GitHub: [@biyaG](https://github.com/biyaG)
 - LinkedIn: [@biya-muluwork-b00b42127](https://www.linkedin.com/in/biya-muluwork-b00b42127/)
 
 ---
 
-## 13. License
+## 16. License
 
 This project is licensed under the MIT License, see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 14. Acknowledgements
+## 17. Acknowledgements
 
-### 14.1 Dataset
+### 17.1 Dataset
 
 - **Source**: [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success)
 - **Authors**: Valentim Realinho, Mónica Vieira Martins, Jorge Machado, Luís Baptista
 - **Institution**: Polytechnic Institute of Portalegre, Portugal
 - **Year**: 2021
 
-### 14.2 Tools and Libraries
+### 17.2 Tools and Libraries
 
 - [scikit-learn](https://scikit-learn.org/) : Machine learning framework
 - [XGBoost](https://xgboost.readthedocs.io/) : Gradient boosting
@@ -593,7 +838,7 @@ This project is licensed under the MIT License, see the [LICENSE](LICENSE) file 
 - [matplotlib](https://matplotlib.org/) and [seaborn](https://seaborn.pydata.org/) : Visualization
 - [Jupyter](https://jupyter.org/) : Interactive computing
 
-### 14.3 Professors
+### 17.3 Professors
 
 - [Marcelloni Francesco](https://www.unipi.it/ateneo/organizzazione/persone/francesco-marcelloni-4003/) : Titolare
 - [Pistolesi Francesco](https://www.unipi.it/ateneo/organizzazione/persone/francesco-pistolesi-112763/) : Docente
@@ -601,7 +846,7 @@ This project is licensed under the MIT License, see the [LICENSE](LICENSE) file 
 
 ---
 
-## 15. Citation
+## 18. Citation
 
 ```bibtex
 @dataset{realinho2021,
